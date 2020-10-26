@@ -10,8 +10,8 @@ import (
 	"github.com/byuoitav/connpool"
 )
 
-// GetMutedByBlock returns true if the given block is muted.
-func (d *DSP) GetMutes(ctx context.Context, blocks []string) (map[string]bool, error) {
+// Mutes returns a map of block to mute.
+func (d *DSP) Mutes(ctx context.Context, blocks []string) (map[string]bool, error) {
 	toReturn := make(map[string]bool)
 
 	for _, block := range blocks {
@@ -95,7 +95,7 @@ func (d *DSP) GetMutes(ctx context.Context, blocks []string) (map[string]bool, e
 	return toReturn, nil
 }
 
-// SetMutedByBlock sets the mute state on the given block.
+// SetMute sets the mute state on the given block.
 func (d *DSP) SetMute(ctx context.Context, block string, mute bool) error {
 	data := []byte{0x00, 0x00, 0x00, 0x00}
 	if mute {

@@ -13,8 +13,8 @@ const (
 	volumeScaleFactor = 65536
 )
 
-// GetVolumeByBlock returns the volume [0, 100] of the given block.
-func (d *DSP) GetVolumes(ctx context.Context, blocks []string) (map[string]int, error) {
+// Volumes returns the volume [0, 100] of the given block.
+func (d *DSP) Volumes(ctx context.Context, blocks []string) (map[string]int, error) {
 	toReturn := make(map[string]int)
 
 	for _, block := range blocks {
@@ -95,7 +95,7 @@ func (d *DSP) GetVolumes(ctx context.Context, blocks []string) (map[string]int, 
 	return toReturn, nil
 }
 
-// SetVolumeByBlock sets the volume on the given block. Volume must be in the range [0, 100].
+// SetVolume sets the volume on the given block. Volume must be in the range [0, 100].
 func (d *DSP) SetVolume(ctx context.Context, block string, volume int) error {
 	if volume < 0 || volume > 100 {
 		return fmt.Errorf("volume must be in range [0, 100]")
